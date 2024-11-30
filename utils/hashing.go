@@ -7,7 +7,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/Lucifer07/lunar/configs"
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -31,7 +30,7 @@ func GenerateJWT(userID uint) (string, error) {
 		"exp":     time.Now().Add(time.Hour * 72).Unix(),
 	})
 
-	tokenString, err := token.SignedString([]byte(configs.JWTSecret))
+	tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
 	if err != nil {
 		return "", err
 	}

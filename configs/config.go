@@ -2,6 +2,7 @@ package configs
 
 import (
 	. "github.com/Lucifer07/lunar/pkg/databases"
+	. "github.com/Lucifer07/lunar/utils"
 )
 
 var Database = []DBConfig{
@@ -15,9 +16,3 @@ var Database = []DBConfig{
 		Database: GetEnv("DB_DATABASE", "test"),
 	},
 }
-var JwtSecret = GetEnv("JWT_SECRET","secret")
-var AppMode = GetEnv("APP_MODE","development")
-var AppPort = GetEnv("APP_PORT","8080")
-var AppHost = GetEnv("APP_HOST","localhost")
-var ApiLocal = GetEnv("API_LOCAL","http://localhost:8080")
-var ApiProd = GetEnv("API_PROD","http://localhost:8080")
