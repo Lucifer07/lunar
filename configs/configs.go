@@ -16,3 +16,5 @@ var Database = []DBConfig{
 		Database: GetEnv("DB_DATABASE", "test"),
 	},
 }
+
+var JwtSecreet = GetEnv("jwt_secret","secret")

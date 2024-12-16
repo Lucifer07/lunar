@@ -16,3 +16,12 @@ func InitDB() (Databases, error) {
 	return dbManager, nil
 }
 
+func InitRepo(name,connection string,dbManager Databases){
+	db:= dbManager.GetDB()
+	var database 
+	switch connection {
+	case "mongo":
+
+
+}
+

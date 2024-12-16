@@ -4,9 +4,9 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"os"
 	"time"
 
+	"github.com/Lucifer07/lunar/configs"
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -30,7 +30,7 @@ func GenerateJWT(userID uint) (string, error) {
 		"exp":     time.Now().Add(time.Hour * 72).Unix(),
 	})
 
-	tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+	tokenString, err := token.SignedString([]byte(configs.JwtSecreet))
 	if err != nil {
 		return "", err
 	}
@@ -39,7 +39,7 @@ func GenerateJWT(userID uint) (string, error) {
 }
 
 func ParseToken(tokenString string) (jwt.MapClaims, error) {
-	encodedSecret := os.Getenv("JWT_SECRET")
+	encodedSecret := configs.JwtSecreet
 	if encodedSecret == "" {
 		return nil, errors.New("JWT_SECRET not set")
 	}
